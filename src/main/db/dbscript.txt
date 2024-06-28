@@ -1,12 +1,16 @@
+DROP TABLE profile;
+DROP TABLE users;
+DROP TABLE company;
+
 CREATE TABLE company(
                         id SERIAL PRIMARY KEY ,
-                        name VARCHAR(32) unique
+                        name VARCHAR(32) UNIQUE NOT NULL
 );
 
 CREATE TABLE users
 (
     id BIGSERIAL PRIMARY KEY ,
-    username VARCHAR(128) unique ,
+    username VARCHAR(128) UNIQUE NOT NULL ,
     firstname VARCHAR(128) ,
     lastname VARCHAR(128),
     birth_date DATE,
@@ -14,5 +18,11 @@ CREATE TABLE users
     company_id INT REFERENCES company(id)
 );
 
-DROP TABLE users;
-DROP TABLE company;
+CREATE TABLE profile
+(
+    id BIGSERIAL PRIMARY KEY ,
+    user_id BIGINT NOT NULL UNIQUE REFERENCES users(id),
+    street VARCHAR(32),
+    language CHAR(2)
+ );
+
