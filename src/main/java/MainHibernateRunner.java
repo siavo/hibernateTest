@@ -29,16 +29,14 @@ public class MainHibernateRunner {
              Session session = sessionFactory.openSession();
         ) {
 
-            log.info("begin transaction");
             session.beginTransaction();
 
-            session.save(company);
-            session.save(user);
-
-            log.info("Company: {}", user.getCompany().getName());
+            /*session.save(company);
+            session.save(user);*/
+            Company company1 = session.get(Company.class, 1);
+            session.delete(company1);
 
             session.getTransaction().commit();
-            log.info("transaction end");
 
         }catch (Exception e){
             log.info("transaction error");
