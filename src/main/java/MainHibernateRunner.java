@@ -1,7 +1,4 @@
-import entity.BirthDay;
-import entity.Company;
-import entity.Role;
-import entity.User;
+import entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,16 +22,32 @@ public class MainHibernateRunner {
                 company(company).
                 role(Role.USER).build();
 
+        /*User user2 = User.builder().
+                username("Sasha").
+                firstname("vlad").
+                firstname("vlad").
+                lastname("vladov").
+                birthdate(new BirthDay(LocalDate.of(1985, 4, 6))).
+                company(company).
+                role(Role.USER).build();*/
+
+        Profile profile = Profile.builder()
+                .street("Street")
+                .language("ru")
+                .build();
+        profile.setUser(user);
+
         try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
              Session session = sessionFactory.openSession();
         ) {
 
             session.beginTransaction();
 
-            /*session.save(company);
-            session.save(user);*/
-            Company company1 = session.get(Company.class, 1);
-            session.delete(company1);
+            //session.delete(session.get(Company.class, 1));
+            session.save(company);
+            session.save(user);
+            company.addUser(user);
+            //session.delete(session.get(User.class, 1L));
 
             session.getTransaction().commit();
 

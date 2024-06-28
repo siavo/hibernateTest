@@ -23,7 +23,7 @@ public class Company {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private Set<User> users = new HashSet<>();
 
