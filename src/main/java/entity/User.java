@@ -40,7 +40,7 @@ public class User {
     private Profile profile;
 
     @Builder.Default
-    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserChat> userChats = new ArrayList<>();
 
 }

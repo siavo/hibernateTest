@@ -51,7 +51,7 @@ public class MainTest {
     @Test
     void addUser() {
         User user = User.builder()
-                .username("vald" + String.valueOf(Math.round(100)))
+                .username("vald" + String.valueOf(Math.round(Math.random()*100)))
                 .firstname("vlad")
                 .lastname("vladov")
                 .role(Role.USER)

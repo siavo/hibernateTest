@@ -67,7 +67,10 @@ public class MainHibernateRunner {
             //session.get(session.get(User.class, 1L));
 
             User user1 = session.get(User.class, 2L);
-            //user1.getUserChats().add(userChat2);
+            if (!session.contains(userChat2)){
+                session.persist(userChat2);
+            }
+            user1.getUserChats().add(userChat2);
 
             session.getTransaction().commit();
 
