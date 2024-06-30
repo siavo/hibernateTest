@@ -22,8 +22,8 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String username;
-    private String firstname;
-    private String lastname;
+
+    private UserInfo userInfo;
 
     @Convert(converter = BirthDayConverter.class)
     @Column(name = "birth_date")

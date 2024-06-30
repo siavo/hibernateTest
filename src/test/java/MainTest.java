@@ -16,9 +16,8 @@ public class MainTest {
 
         User user = User.builder()
                 .username("vald")
-                .firstname("vlad")
-                .lastname("vladov")
-                .role(Role.USER)
+                .userInfo(UserInfo.builder().firstName("vlad").lastName("vladov").build()).
+                role(Role.USER)
                 .birthdate(new BirthDay(LocalDate.of(1999, 1, 1)))
                 .company(company).build();
 
@@ -52,8 +51,7 @@ public class MainTest {
     void addUser() {
         User user = User.builder()
                 .username("vald" + String.valueOf(Math.round(Math.random()*100)))
-                .firstname("vlad")
-                .lastname("vladov")
+                .userInfo(UserInfo.builder().firstName("vlad").lastName("vladov").build())
                 .role(Role.USER)
                 .birthdate(new BirthDay(LocalDate.of(1999, 1, 1)))
                 .build();
