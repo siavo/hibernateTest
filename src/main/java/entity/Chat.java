@@ -25,8 +25,4 @@ public class Chat {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserChat> userChats = new ArrayList<>();
 
-    public void addUser(UserChat userChat){
-        userChat.setChat(this);
-        this.getUserChats().add(userChat);
-    }
 }
