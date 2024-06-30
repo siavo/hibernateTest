@@ -4,13 +4,15 @@ import converter.BirthDayConverter;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(of = "username")
-@ToString(exclude = "company")
+@ToString(exclude = {"company", "userChats"})
 @Entity
 @Table(name = "users")
 public class User {
@@ -36,4 +38,9 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, optional = false)
     private Profile profile;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL)
+    private List<UserChat> userChats = new ArrayList<>();
+
 }

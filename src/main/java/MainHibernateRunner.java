@@ -37,6 +37,20 @@ public class MainHibernateRunner {
                 .build();
         profile.setUser(user);
 
+        Chat chat = Chat.builder()
+                .name(user.getUsername() + "_chat").build();
+        UserChat userChat = UserChat.builder().build();
+        userChat.setUser(user);
+        userChat.setChat(chat);
+
+        Chat chat2 = Chat.builder()
+                .name(user.getUsername() + "_chat2").build();
+        UserChat userChat2 = UserChat.builder().build();
+        userChat2.setUser(user);
+        userChat2.setChat(chat);
+
+
+
         try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory();
              Session session = sessionFactory.openSession();
         ) {
@@ -44,10 +58,16 @@ public class MainHibernateRunner {
             session.beginTransaction();
 
             //session.delete(session.get(Company.class, 1));
-            session.save(company);
+            /*session.save(company);
             session.save(user);
-            company.addUser(user);
-            //session.delete(session.get(User.class, 1L));
+            session.save(chat);
+            session.save(userChat);
+            company.addUser(user);*/
+
+            //session.get(session.get(User.class, 1L));
+
+            User user1 = session.get(User.class, 2L);
+            user1.getUserChats().add(userChat2);
 
             session.getTransaction().commit();
 
