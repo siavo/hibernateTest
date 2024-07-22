@@ -1,6 +1,6 @@
-package util;
+package com.vchdev.util;
 
-import converter.BirthDayConverter;
+import com.vchdev.converter.BirthDayConverter;
 import lombok.experimental.UtilityClass;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

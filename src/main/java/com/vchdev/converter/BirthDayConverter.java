@@ -1,9 +1,9 @@
-package converter;
+package com.vchdev.converter;
 
-import entity.BirthDay;
+import com.vchdev.entity.BirthDay;
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
 import java.sql.Date;
 
 @Converter(autoApply = true)

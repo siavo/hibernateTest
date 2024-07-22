@@ -1,9 +1,9 @@
-package entity;
+package com.vchdev.entity;
 
-import converter.BirthDayConverter;
+import com.vchdev.converter.BirthDayConverter;
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class User {
     private Profile profile;
 
     @Builder.Default
-    @OneToMany(mappedBy = "chat", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserChat> userChats = new ArrayList<>();
 
 }

@@ -1,13 +1,13 @@
-import entity.*;
+import com.vchdev.entity.*;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.Test;
-import util.HibernateUtil;
+import com.vchdev.util.HibernateUtil;
 
 import java.time.LocalDate;
 
-@Slf4j
+
 public class MainTest {
 
     @Test
@@ -41,7 +41,7 @@ public class MainTest {
 
             session.getTransaction().commit();
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            //log.error(e.getMessage(), e);
             throw e;
         }
 
@@ -77,7 +77,7 @@ public class MainTest {
 
             session.getTransaction().commit();
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            //log.error(e.getMessage(), e);
             throw e;
         }
 
@@ -94,7 +94,7 @@ public class MainTest {
 
             session.getTransaction().commit();
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            //log.error(e.getMessage(), e);
             throw e;
         }
     }

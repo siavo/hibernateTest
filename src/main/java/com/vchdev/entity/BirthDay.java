@@ -1,4 +1,4 @@
-package entity;
+package com.vchdev.entity;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
