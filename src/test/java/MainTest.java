@@ -1,9 +1,8 @@
 import com.vchdev.dao.entity.*;
-import com.vchdev.entity.*;
+import com.vchdev.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.Test;
-import com.vchdev.util.HibernateUtil;
 
 import java.time.LocalDate;
 
