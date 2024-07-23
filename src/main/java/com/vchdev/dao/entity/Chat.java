@@ -1,4 +1,4 @@
-package com.vchdev.entity;
+package com.vchdev.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,12 +12,7 @@ import java.util.List;
 @ToString(exclude = "userChats")
 @Builder
 @Entity
-public class Chat {
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Chat extends BaseEntity<Long> {
 
     private String name;
 

@@ -1,6 +1,6 @@
 package com.vchdev.converter;
 
-import com.vchdev.entity.BirthDay;
+import com.vchdev.dao.entity.BirthDay;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

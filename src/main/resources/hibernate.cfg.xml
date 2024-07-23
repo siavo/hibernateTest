@@ -12,10 +12,10 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
 
-    <mapping class="com.vchdev.entity.User"/>
-    <mapping class="com.vchdev.entity.Company"/>
-    <mapping class="com.vchdev.entity.Profile"/>
-    <mapping class="com.vchdev.entity.Chat"/>
-    <mapping class="com.vchdev.entity.UserChat"/>
+    <mapping class="com.vchdev.dao.entity.User"/>
+    <mapping class="com.vchdev.dao.entity.Company"/>
+    <mapping class="com.vchdev.dao.entity.Profile"/>
+    <mapping class="com.vchdev.dao.entity.Chat"/>
+    <mapping class="com.vchdev.dao.entity.UserChat"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,20 +1,14 @@
-package com.vchdev.entity;
+package com.vchdev.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.persistence.*;
-
-@Embeddable
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Builder
-public class UserInfo {
-
-    private String firstName;
-    private String lastName;
-
+public class CompanyTO extends BaseTO<Integer> {
+    private String name;
 }

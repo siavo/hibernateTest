@@ -1,4 +1,4 @@
-package com.vchdev.entity;
+package com.vchdev.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,11 +13,7 @@ import java.util.List;
 @EqualsAndHashCode(of = "name")
 @ToString(exclude = "users")
 @Entity
-public class Company {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Company extends BaseEntity<Integer> {
 
     @Column(nullable = false, unique = true)
     private String name;

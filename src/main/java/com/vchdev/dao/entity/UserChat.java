@@ -1,9 +1,6 @@
-package com.vchdev.entity;
+package com.vchdev.dao.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.*;
 
@@ -12,12 +9,10 @@ import jakarta.persistence.*;
 @AllArgsConstructor
 @Builder
 @Entity
+@ToString
+@EqualsAndHashCode
 @Table(name = "user_chat")
-public class UserChat {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class UserChat extends BaseEntity<Long> {
 
     @ManyToOne
     private User user;

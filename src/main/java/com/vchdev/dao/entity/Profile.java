@@ -1,4 +1,4 @@
-package com.vchdev.entity;
+package com.vchdev.dao.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,11 +9,7 @@ import lombok.*;
 @Builder
 @ToString(exclude = "user")
 @Entity
-public class Profile {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Profile extends BaseEntity<Long>{
 
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
