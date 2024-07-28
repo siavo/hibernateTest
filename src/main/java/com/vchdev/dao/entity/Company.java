@@ -13,7 +13,7 @@ import java.util.List;
 @EqualsAndHashCode(of = "name")
 @ToString(exclude = "users")
 @Entity
-public class Company extends BaseEntity<Integer> {
+public class Company extends BaseEntity<Long> {
 
     @Column(nullable = false, unique = true)
     private String name;
@@ -21,7 +21,7 @@ public class Company extends BaseEntity<Integer> {
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    @OrderBy("firstname DESC, username ASC")
+    @OrderBy("userInfo.firstName DESC, username ASC")
     private List<User> users = new ArrayList<>();
 
     public void addUser(User user){

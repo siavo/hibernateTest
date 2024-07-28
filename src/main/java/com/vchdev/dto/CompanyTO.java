@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class CompanyTO extends BaseTO<Integer> {
+public class CompanyTO extends BaseTO<Long> {
     private String name;
 }

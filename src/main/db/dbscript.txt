@@ -5,7 +5,7 @@ DROP TABLE company;
 DROP TABLE chat;
 
 CREATE TABLE company(
-                        id SERIAL PRIMARY KEY ,
+                        id BIGSERIAL PRIMARY KEY ,
                         name VARCHAR(32) UNIQUE NOT NULL
 );
 

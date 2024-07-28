@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ChatDao extends JpaRepository<Chat, Long> {
+public interface ChatRepository extends CommonRepository<Chat> {
 }
