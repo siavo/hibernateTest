@@ -21,7 +21,7 @@ public class Company extends AbstractEntity<Long> {
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    @OrderBy("userInfo.firstName DESC, username ASC")
+    @OrderBy("userInfo.firstname DESC, username ASC")
     private List<User> users = new ArrayList<>();
 
     public void addUser(User user){

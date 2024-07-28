@@ -20,7 +20,7 @@ public class UserInfo implements Serializable {
     @Serial
     private static final long serialVersionUID = -6911562509831634636L;
 
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
 
 }
