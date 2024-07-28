@@ -12,7 +12,7 @@ public interface CommonService<E extends BaseEntity> {
 
     Optional<E> findById(Long id);
 
-    Optional<E> saveOrUpdate(E obj);
+    Optional<E> saveOrUpdate(E entity);
 
     void delete(Long id);
 }

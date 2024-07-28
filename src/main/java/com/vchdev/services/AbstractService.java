@@ -10,7 +10,6 @@ import java.util.Optional;
 
 public abstract class AbstractService<E extends BaseEntity, R extends JpaRepository> implements CommonService<E>{
 
-
     protected final R repository;
 
     @Autowired
@@ -18,20 +17,24 @@ public abstract class AbstractService<E extends BaseEntity, R extends JpaReposit
         this.repository = repository;
     }
 
+    @Override
     public List<E> findAll(){
-        return Collections.emptyList();
+        return repository.findAll();
     }
 
+    @Override
     public Optional<E> findById(Long id){
-        return Optional.empty();
+        return repository.findById(id);
     }
 
-    public Optional<E> saveOrUpdate(E obj){
-        return Optional.empty();
+    @Override
+    public Optional<E> saveOrUpdate(E entity){
+        return Optional.of(repository.save(entity));
     }
 
+    @Override
     public void delete(Long id){
-
+        repository.deleteById(id);
     }
 
 }
