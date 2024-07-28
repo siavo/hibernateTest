@@ -12,7 +12,7 @@ import jakarta.persistence.*;
 @ToString
 @EqualsAndHashCode
 @Table(name = "user_chat")
-public class UserChat extends BaseEntity<Long> {
+public class UserChat extends AbstractEntity<Long> {
 
     @ManyToOne
     private User user;

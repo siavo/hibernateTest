@@ -15,7 +15,7 @@ import java.util.List;
 @ToString(exclude = {"company", "userChats"})
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity<Long> {
+public class User extends AbstractEntity<Long> {
 
     @Column(nullable = false, unique = true)
     private String username;

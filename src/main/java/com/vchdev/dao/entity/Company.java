@@ -13,7 +13,7 @@ import java.util.List;
 @EqualsAndHashCode(of = "name")
 @ToString(exclude = "users")
 @Entity
-public class Company extends BaseEntity<Long> {
+public class Company extends AbstractEntity<Long> {
 
     @Column(nullable = false, unique = true)
     private String name;

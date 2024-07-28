@@ -12,7 +12,7 @@ import java.util.List;
 @ToString(exclude = "userChats")
 @Builder
 @Entity
-public class Chat extends BaseEntity<Long> {
+public class Chat extends AbstractEntity<Long> {
 
     private String name;
 

@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 @ToString(exclude = "user")
 @Entity
-public class Profile extends BaseEntity<Long>{
+public class Profile extends AbstractEntity<Long> {
 
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
