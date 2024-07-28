@@ -15,14 +15,4 @@ public class CompanyService extends AbstractService<Company, CompanyRepository> 
         super(repository);
     }
 
-    public void test(){
-        List<BaseEntity> baseEntities = new ArrayList<>();
-
-        baseEntities.add(Company.builder().build());
-        test2(Company.builder().build());
-    }
-
-    public void test2(BaseEntity baseEntity){
-
-    }
 }

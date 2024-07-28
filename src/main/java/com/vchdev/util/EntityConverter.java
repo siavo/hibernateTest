@@ -1,8 +1,6 @@
 package com.vchdev.util;
 
-import com.vchdev.dao.entity.AbstractEntity;
 import com.vchdev.dao.entity.BaseEntity;
-import com.vchdev.dao.entity.Company;
 import com.vchdev.dto.BaseTO;
 import lombok.experimental.UtilityClass;
 
