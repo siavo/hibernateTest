@@ -1,12 +1,11 @@
 package com.vchdev.contrellers;
 
-import com.vchdev.dao.entity.Company;
+import com.vchdev.dao.entity.Chat;
 import com.vchdev.dto.BaseTO;
-import com.vchdev.dto.CompanyTO;
-import com.vchdev.services.CompanyService;
+import com.vchdev.dto.ChatTO;
+import com.vchdev.services.ChatService;
 import com.vchdev.util.EntityConverter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,40 +15,39 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("/company")
-public class CompanyController {
+@RequestMapping("chat")
+public class ChatController {
 
-    private final CompanyService service;
+    private final ChatService service;
 
-    @Autowired
-    public CompanyController(CompanyService service) {
+    public ChatController(ChatService service) {
         this.service = service;
     }
 
     @GetMapping("/all")
     public ResponseEntity<List> findAll() {
-        List<BaseTO> companies = new ArrayList<>();
+        List<BaseTO> chats = new ArrayList<>();
         try{
-            companies = EntityConverter.convertToDTOs(service.findAll());
+            chats = EntityConverter.convertToDTOs(service.findAll());
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return ResponseEntity.noContent().build();
-        } return ResponseEntity.ok(companies);
+        } return ResponseEntity.ok(chats);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<CompanyTO> add(@RequestBody CompanyTO companyTO){
+    public ResponseEntity<ChatTO> add(@RequestBody ChatTO chatTO){
         try{
-            companyTO = (CompanyTO) EntityConverter.convertToDto(service.saveOrUpdate((Company) EntityConverter.convertToEntity(companyTO)));
+            chatTO = (ChatTO) EntityConverter.convertToDto(service.saveOrUpdate((Chat) EntityConverter.convertToEntity(chatTO)));
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } return new ResponseEntity<>(companyTO, HttpStatus.CREATED);
+        } return new ResponseEntity<>(chatTO, HttpStatus.CREATED);
     }
 
     @PostMapping("/update")
-    public ResponseEntity update(@RequestBody CompanyTO companyTO){
+    public ResponseEntity update(@RequestBody ChatTO chatTO){
 
-        service.saveOrUpdate((Company) EntityConverter.convertToEntity(companyTO));
+        service.saveOrUpdate((Chat) EntityConverter.convertToEntity(chatTO));
         return ResponseEntity.ok().build();
     }
 
@@ -64,14 +62,14 @@ public class CompanyController {
     }
 
     @GetMapping("/details/{id}")
-    public ResponseEntity<CompanyTO> findById(@PathVariable Long id){
-        CompanyTO companyTO = null;
+    public ResponseEntity<ChatTO> findById(@PathVariable Long id){
+        ChatTO chatTO = null;
         try {
-            companyTO = (CompanyTO) EntityConverter.convertToDto(service.findById(id).get());
+            chatTO = (ChatTO) EntityConverter.convertToDto(service.findById(id).get());
         } catch (Exception e) {
             log.error(e.getMessage());
-            new ResponseEntity("Company id:" + id + " not found", HttpStatus.NOT_ACCEPTABLE);
+            new ResponseEntity("Chat id:" + id + " not found", HttpStatus.NOT_ACCEPTABLE);
         }
-        return ResponseEntity.ok(companyTO);
+        return ResponseEntity.ok(chatTO);
     }
 }
