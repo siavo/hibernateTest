@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(of = "name")
+@EqualsAndHashCode(of = "name", callSuper = false)
 @ToString(exclude = "users")
 @Entity
 public class Company extends AbstractEntity<Long> {

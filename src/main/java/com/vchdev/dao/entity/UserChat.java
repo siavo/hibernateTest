@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 @Builder
 @Entity
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @Table(name = "user_chat")
 public class UserChat extends AbstractEntity<Long> {
 
