@@ -17,4 +17,6 @@ public class UserTO extends BaseTO {
     private String lastname;
     private LocalDate birthdate;
     private String role;
+
+
 }

@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/company")
 public class CompanyController {
 
