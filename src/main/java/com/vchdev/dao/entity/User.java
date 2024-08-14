@@ -3,8 +3,12 @@ package com.vchdev.dao.entity;
 import com.vchdev.converter.BirthDayConverter;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -19,6 +23,9 @@ public class User extends AbstractEntity<Long> {
 
     @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
+    private String password;
 
     private UserInfo userInfo;
 

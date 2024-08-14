@@ -13,10 +13,9 @@ import java.time.LocalDate;
 @Builder
 public class UserTO extends BaseTO {
     private String username;
+    private String password;
     private String firstname;
     private String lastname;
     private LocalDate birthdate;
     private String role;
-
-
 }
