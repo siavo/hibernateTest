@@ -10,7 +10,7 @@ import java.util.Base64;
 @RestController
 @Slf4j
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/test")
+@RequestMapping("/auth")
 public class SecurityController {
 
     @GetMapping("/login")
