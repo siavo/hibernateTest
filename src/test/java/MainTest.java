@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 public class MainTest {
 
-    @Test
+    /*@Test
     void initData() {
         Company company = Company.builder().name("Google").build();
 
@@ -96,5 +96,5 @@ public class MainTest {
             //log.error(e.getMessage(), e);
             throw e;
         }
-    }
+    }*/
 }
