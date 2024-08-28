@@ -3,12 +3,11 @@ package com.vchdev.dao.entity;
 import com.vchdev.converter.BirthDayConverter;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -19,6 +18,7 @@ import java.util.List;
 @ToString(exclude = {"company", "userChats"})
 @Entity
 @Table(name = "users")
+@DynamicInsert
 public class User extends AbstractEntity<Long> {
 
     @Column(nullable = false, unique = true)
@@ -33,6 +33,8 @@ public class User extends AbstractEntity<Long> {
     @Column(name = "birth_date")
     private BirthDay birthdate;
 
+    @Column(name = "role")
+    @ColumnDefault("'NOBODY'")
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -46,5 +48,7 @@ public class User extends AbstractEntity<Long> {
     @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserChat> userChats = new ArrayList<>();
+
+    private LocalDate registrationDate;
 
 }

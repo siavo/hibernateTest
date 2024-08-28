@@ -23,4 +23,8 @@ public class UserService extends AbstractService<User, UserRepository> implement
         }
         return new SecurityUserDetails(user.get());
     }
+
+    public boolean existByUsername(String username){
+        return repository.existsByUsername(username);
+    }
 }

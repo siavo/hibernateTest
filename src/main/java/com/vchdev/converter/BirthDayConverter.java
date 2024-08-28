@@ -10,12 +10,12 @@ import java.sql.Date;
 public class BirthDayConverter implements AttributeConverter<BirthDay, Date> {
     @Override
     public Date convertToDatabaseColumn(BirthDay attribute) {
-        return Date.valueOf(attribute.birthDate());
+        return attribute != null ? Date.valueOf(attribute.birthDate()) : null;
     }
 
     @Override
     public BirthDay convertToEntityAttribute(Date dbData) {
-        if (dbData == null){
+        if (dbData == null) {
             return null;
         }
         return new BirthDay(dbData.toLocalDate());

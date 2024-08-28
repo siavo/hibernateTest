@@ -56,11 +56,13 @@ public class EntityConverter {
             }
             for (Field toField : entityFields) {
                 Field entityField = ReflectionUtils.findField(entity.getClass(), toField.getName());
-                entityField.setAccessible(true);
-                toField.setAccessible(true);
-                toField.set(baseTO, entityField.get(entity));
-                entityField.setAccessible(false);
-                toField.setAccessible(false);
+                if (entityField != null) {
+                    entityField.setAccessible(true);
+                    toField.setAccessible(true);
+                    toField.set(baseTO, entityField.get(entity));
+                    entityField.setAccessible(false);
+                    toField.setAccessible(false);
+                }
             }
         }
         catch (Exception e) {

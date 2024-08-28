@@ -12,6 +12,10 @@ repositories {
     mavenCentral()
 }
 
+bootWar {
+    archiveFileName = 'ROOT.war'
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)

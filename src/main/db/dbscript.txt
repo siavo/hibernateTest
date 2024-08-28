@@ -17,7 +17,8 @@ CREATE TABLE users
     firstname VARCHAR(128) ,
     lastname VARCHAR(128),
     birth_date DATE,
-    role VARCHAR(32),
+    registration_date DATE DEFAULT CURRENT_DATE,
+    role VARCHAR(32) DEFAULT 'NOBODY',
     company_id INT REFERENCES company(id)
 );
 

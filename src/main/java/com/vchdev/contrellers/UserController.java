@@ -37,11 +37,12 @@ public class UserController {
 
     @PostMapping("/add")
     public ResponseEntity<UserTO> add(@RequestBody UserTO userTO){
+        UserTO newUser;
         try{
-            userTO = (UserTO) EntityConverter.convertToDto(service.saveOrUpdate((User) EntityConverter.convertToEntity(userTO)));
+            newUser = (UserTO) EntityConverter.convertToDto(service.saveOrUpdate((User) EntityConverter.convertToEntity(userTO)));
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } return new ResponseEntity<>(userTO, HttpStatus.CREATED);
+        } return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
     @PostMapping("/update")
