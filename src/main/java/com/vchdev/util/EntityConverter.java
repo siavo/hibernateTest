@@ -23,7 +23,7 @@ public class EntityConverter {
 
         for (BaseEntity entity : entities) {
             try {
-                result.add(convertToDto(entity));
+                result.add(entity.convertToDTO());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -36,7 +36,7 @@ public class EntityConverter {
 
         for (BaseTO baseTO : baseTOS) {
             try {
-                result.add(convertToEntity(baseTO));
+                result.add(baseTO.convertToEntity());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -51,7 +51,7 @@ public class EntityConverter {
             baseTO = (BaseTO) Class.forName(className).newInstance();
             List<Field> entityFields = new ArrayList<>();
             entityFields.addAll(Arrays.asList(baseTO.getClass().getDeclaredFields()));
-            if (baseTO.getClass().getSuperclass() != null){
+            if (baseTO.getClass().getSuperclass() != null) {
                 entityFields.addAll(Arrays.asList(baseTO.getClass().getSuperclass().getDeclaredFields()));
             }
             for (Field toField : entityFields) {
@@ -59,13 +59,16 @@ public class EntityConverter {
                 if (entityField != null) {
                     entityField.setAccessible(true);
                     toField.setAccessible(true);
-                    toField.set(baseTO, entityField.get(entity));
+                    try {
+                        toField.set(baseTO, entityField.get(entity));
+                    } catch (IllegalArgumentException e) {
+                        //throw new RuntimeException(e); //TODO implement individual properties in Entity
+                    }
                     entityField.setAccessible(false);
                     toField.setAccessible(false);
                 }
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
@@ -76,11 +79,11 @@ public class EntityConverter {
         BaseEntity baseEntity;
         try {
             String simpleClassName = baseTO.getClass().getSimpleName();
-            String className = entityPackageNameWithDot + simpleClassName.substring(0, simpleClassName.length()-2);
+            String className = entityPackageNameWithDot + simpleClassName.substring(0, simpleClassName.length() - 2);
             baseEntity = (BaseEntity) Class.forName(className).newInstance();
             List<Field> toFields = new ArrayList<>();
             toFields.addAll(Arrays.asList(baseTO.getClass().getDeclaredFields()));
-            if (baseTO.getClass().getSuperclass() != null){
+            if (baseTO.getClass().getSuperclass() != null) {
                 toFields.addAll(Arrays.asList(baseTO.getClass().getSuperclass().getDeclaredFields()));
             }
             for (Field toField : toFields) {
@@ -91,8 +94,7 @@ public class EntityConverter {
                 entityField.setAccessible(false);
                 toField.setAccessible(false);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 

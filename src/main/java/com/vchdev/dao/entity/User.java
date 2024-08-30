@@ -1,6 +1,8 @@
 package com.vchdev.dao.entity;
 
 import com.vchdev.converter.BirthDayConverter;
+import com.vchdev.dto.BaseTO;
+import com.vchdev.dto.UserTO;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -51,4 +53,16 @@ public class User extends AbstractEntity<Long> {
 
     private LocalDate registrationDate;
 
+    @Override
+    public UserTO convertToDTO() {
+
+        UserTO userTO = (UserTO) super.convertToDTO();
+
+        userTO.setBirthdate(this.getBirthdate() != null ? this.getBirthdate().birthDate() : null);
+        userTO.setRole(this.getRole().name());
+        userTO.setFirstname(this.getUserInfo() != null ? this.getUserInfo().getFirstname() : null);
+        userTO.setLastname(this.getUserInfo() != null ? this.getUserInfo().getLastname() : null);
+
+        return userTO;
+    }
 }

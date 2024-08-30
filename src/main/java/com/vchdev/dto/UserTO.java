@@ -1,5 +1,9 @@
 package com.vchdev.dto;
 
+import com.vchdev.dao.entity.BaseEntity;
+import com.vchdev.dao.entity.BirthDay;
+import com.vchdev.dao.entity.User;
+import com.vchdev.dao.entity.UserInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,4 +23,12 @@ public class UserTO extends BaseTO {
     private LocalDate birthdate;
     private String role;
     private LocalDate registrationDate;
+
+    @Override
+    public User convertToEntity() {
+        User user = (User)super.convertToEntity();
+        user.setUserInfo(new UserInfo(firstname, lastname));
+        user.setBirthdate(new BirthDay(birthdate));
+        return user;
+    }
 }

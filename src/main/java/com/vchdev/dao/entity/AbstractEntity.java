@@ -1,5 +1,7 @@
 package com.vchdev.dao.entity;
 
+import com.vchdev.dto.BaseTO;
+import com.vchdev.util.EntityConverter;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,4 +18,8 @@ public abstract class AbstractEntity<T extends Serializable> implements BaseEnti
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private T id;
+
+     public BaseTO convertToDTO(){
+        return EntityConverter.convertToDto(this);
+    }
 }
