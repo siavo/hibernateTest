@@ -66,7 +66,8 @@ public class UserController {
     public ResponseEntity<UserTO> findById(@PathVariable Long id){
         UserTO userTO = null;
         try {
-            userTO = (UserTO) EntityConverter.convertToDto(service.findById(id).get());
+            User user = service.findById(id).get();
+            userTO = user.convertToDTO();
         } catch (Exception e) {
             log.error(e.getMessage());
             new ResponseEntity("User id:" + id + " not found", HttpStatus.NOT_ACCEPTABLE);
