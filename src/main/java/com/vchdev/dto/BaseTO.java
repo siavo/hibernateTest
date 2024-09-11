@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 public abstract class BaseTO<E extends Serializable> {
-    private E id;
+    private Long id;
 
     public BaseEntity convertToEntity(){
         return EntityConverter.convertToEntity(this);

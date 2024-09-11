@@ -88,11 +88,17 @@ public class EntityConverter {
             }
             for (Field toField : toFields) {
                 Field entityField = ReflectionUtils.findField(baseEntity.getClass(), toField.getName());
-                entityField.setAccessible(true);
-                toField.setAccessible(true);
-                entityField.set(baseEntity, toField.get(baseTO));
-                entityField.setAccessible(false);
-                toField.setAccessible(false);
+                if (entityField != null) {
+                    entityField.setAccessible(true);
+                    toField.setAccessible(true);
+                    try {
+                        entityField.set(baseEntity, toField.get(baseTO));
+                    } catch (IllegalArgumentException e) {
+                        //throw new RuntimeException(e); //TODO implement individual properties in Entity
+                    }
+                    entityField.setAccessible(false);
+                    toField.setAccessible(false);
+                }
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
